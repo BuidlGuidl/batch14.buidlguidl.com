@@ -30,8 +30,8 @@ export default function BuilderProfile({ params }: { params: { address: string }
       <div className="bio-section">
         <h2>About Me</h2>
         <p className="bio-text">
-          I come from a business background in tech and currently doing a master&apos;s in finance. My main interests
-          revolve around DeFi protocols and exploring self-sovereignty concepts.
+          I come from a business background in tech and currently doing a masters in finance. My main interests revolve
+          around DeFi protocols and exploring self-sovereignty concepts.
           <br />
           <br />
           I have some foundational knowledge in IT security (around OSCP level) and algorithmic trading experience and
