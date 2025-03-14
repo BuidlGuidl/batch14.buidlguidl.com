@@ -21,5 +21,3 @@ node_modules
 
 # cli
 dist
-notes.md
-packages/hardhat/contracts/CheckIn.sol
