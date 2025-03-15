@@ -1596,6 +1596,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fortawesome/fontawesome-common-types@npm:6.7.2":
+  version: 6.7.2
+  resolution: "@fortawesome/fontawesome-common-types@npm:6.7.2"
+  checksum: 9c17f03032e56b8e8e996e5b2c15c8b47baf6f8d5c0703025b0b2711907245f94a7032b3da52d2714b5aeff1c14d3535e6869a82086136dcacae9ccd479dc6a2
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-svg-core@npm:^6.7.2":
+  version: 6.7.2
+  resolution: "@fortawesome/fontawesome-svg-core@npm:6.7.2"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.7.2
+  checksum: b3c269545d99202111d8334955466a7f050c38cf80c6be5fdd36baae36822421e0806986db8d1670834fab6595ce527e06ea58248e053703722d03f19eccbb82
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-brands-svg-icons@npm:^6.7.2":
+  version: 6.7.2
+  resolution: "@fortawesome/free-brands-svg-icons@npm:6.7.2"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.7.2
+  checksum: 1583c684e3070952ae392dcb1a6f8a3af3637b8030f2aa2a7305f09150d957493ac2e22d29fd45c801d7166c28200a8d1fc92d67b6aa528e9a3f9715b24a8e95
+  languageName: node
+  linkType: hard
+
+"@fortawesome/react-fontawesome@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@fortawesome/react-fontawesome@npm:0.2.2"
+  dependencies:
+    prop-types: ^15.8.1
+  peerDependencies:
+    "@fortawesome/fontawesome-svg-core": ~1 || ~6
+    react: ">=16.3"
+  checksum: e4bed35bfb7fc88b5bcf2305d08ee1835b82fa7705945c4d310df33bb747b05ef07a33ac9db643c8870ca4f835228978290d84d82f2c6c6a70b9ab4c886731a6
+  languageName: node
+  linkType: hard
+
 "@heroicons/react@npm:^2.1.5":
   version: 2.1.5
   resolution: "@heroicons/react@npm:2.1.5"
@@ -3775,6 +3812,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/nextjs@workspace:packages/nextjs"
   dependencies:
+    "@fortawesome/fontawesome-svg-core": ^6.7.2
+    "@fortawesome/free-brands-svg-icons": ^6.7.2
+    "@fortawesome/react-fontawesome": ^0.2.2
     "@heroicons/react": ^2.1.5
     "@rainbow-me/rainbowkit": 2.2.3
     "@tanstack/react-query": ^5.59.15
@@ -3794,7 +3834,7 @@ __metadata:
     eslint-config-prettier: ^8.10.0
     eslint-plugin-prettier: ^5.2.1
     kubo-rpc-client: ^5.0.2
-    next: ^14.2.11
+    next: 14.2.11
     next-nprogress-bar: ^2.3.13
     next-themes: ^0.3.0
     postcss: ^8.4.45
@@ -13664,7 +13704,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.2.11":
+"next@npm:14.2.11":
   version: 14.2.11
   resolution: "next@npm:14.2.11"
   dependencies:
