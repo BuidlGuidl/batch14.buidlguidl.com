@@ -10,6 +10,9 @@ import { Address } from "viem";
 import { useNetworkColor } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
+import { useAccount } from "wagmi";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+
 
 /**
  * Custom Wagmi Connect Button (watch balance + custom design)
@@ -17,6 +20,22 @@ import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 export const RainbowKitCustomConnectButton = () => {
   const networkColor = useNetworkColor();
   const { targetNetwork } = useTargetNetwork();
+  const { address } = useAccount();
+
+  const { data: isMember } = useScaffoldReadContract ({
+    contractName: "BatchRegistry",
+    functionName: "allowList",
+    args: [address],
+  });
+
+  const { data: yourContractAddress } = useScaffoldReadContract ({
+    contractName: "BatchRegistry",
+    functionName: "yourContractAddress",
+    args: [address],
+  });
+
+  // Convert to boolean: isCheckedIn is considered "checked in" if it's NOT the zero address
+  const isCheckedIn = yourContractAddress && yourContractAddress !== "0x0000000000000000000000000000000000000000";
 
   return (
     <ConnectButton.Custom>
@@ -43,6 +62,16 @@ export const RainbowKitCustomConnectButton = () => {
 
               return (
                 <>
+                  <div className="flex flex-row items-center gap-x-4 mr-1">
+                    <p>
+                      Member Status:{" "}
+                      {isMember ? "✅" : "❌"}
+                    </p>
+                    <p>
+                      Check-in Status:{" "}
+                    {isCheckedIn ? "✅" : "❌"}
+                    </p>
+                  </div>
                   <div className="flex flex-col items-center mr-1">
                     <Balance address={account.address as Address} className="min-h-0 h-auto" />
                     <span className="text-xs" style={{ color: networkColor }}>
