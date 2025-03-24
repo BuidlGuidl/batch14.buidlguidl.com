@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
+import batchRegistryJson from "../../../../hardhat/artifacts/contracts/BatchRegistry.sol/BatchRegistry.json";
 import { NetworkOptions } from "./NetworkOptions";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { getAddress } from "viem";
 import { Address } from "viem";
-import { useDisconnect } from "wagmi";
+import { useDisconnect, useReadContract } from "wagmi";
 import {
   ArrowLeftOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
@@ -11,13 +12,18 @@ import {
   CheckCircleIcon,
   ChevronDownIcon,
   DocumentDuplicateIcon,
+  ExclamationCircleIcon,
   QrCodeIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 import { BlockieAvatar, isENS } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import { getTargetNetworks } from "~~/utils/scaffold-eth";
 
 const allowedNetworks = getTargetNetworks();
+
+const batchRegistryAbi = batchRegistryJson.abi;
+const BATCH_REGISTRY_ADDRESS = "0x47FD1Ff08476d7c7196089D4f5BcabbED4f4ddbE";
 
 type AddressInfoDropdownProps = {
   address: Address;
@@ -39,6 +45,34 @@ export const AddressInfoDropdown = ({
 
   const [selectingNetwork, setSelectingNetwork] = useState(false);
   const dropdownRef = useRef<HTMLDetailsElement>(null);
+
+  const {
+    data: isInAllowList,
+    isLoading: allowListLoading,
+    error: allowListError,
+  } = useReadContract({
+    address: BATCH_REGISTRY_ADDRESS,
+    abi: batchRegistryAbi,
+    functionName: "allowList",
+    args: [checkSumAddress],
+    chainId: 42161,
+  });
+
+  const {
+    data: checkInContract,
+    isLoading: checkInLoading,
+    error: checkInError,
+  } = useReadContract({
+    address: BATCH_REGISTRY_ADDRESS,
+    abi: batchRegistryAbi,
+    functionName: "yourContractAddress",
+    args: [checkSumAddress],
+    chainId: 42161,
+  });
+
+  const hasCheckedIn = checkInContract && checkInContract !== "0x0000000000000000000000000000000000000000";
+  const hasError = !!allowListError || !!checkInError;
+
   const closeDropdown = () => {
     setSelectingNetwork(false);
     dropdownRef.current?.removeAttribute("open");
@@ -53,6 +87,26 @@ export const AddressInfoDropdown = ({
           <span className="ml-2 mr-1">
             {isENS(displayName) ? displayName : checkSumAddress?.slice(0, 6) + "..." + checkSumAddress?.slice(-4)}
           </span>
+          <div className="flex gap-1">
+            {hasError ? (
+              <span className="text-xs text-red-500">Error</span>
+            ) : allowListLoading || checkInLoading ? (
+              <span className="text-xs">...</span>
+            ) : (
+              <>
+                {isInAllowList ? (
+                  <UserIcon className="h-4 w-4 text-green-500" title="Batch Member" />
+                ) : (
+                  <ExclamationCircleIcon className="h-4 w-4 text-red-500" title="Not a Batch Member" />
+                )}
+                {hasCheckedIn ? (
+                  <CheckCircleIcon className="h-4 w-4 text-green-500" title="Checked In" />
+                ) : (
+                  <ExclamationCircleIcon className="h-4 w-4 text-red-500" title="Not Checked In" />
+                )}
+              </>
+            )}
+          </div>
           <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
         </summary>
         <ul
