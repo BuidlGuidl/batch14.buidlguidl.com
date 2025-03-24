@@ -24,6 +24,7 @@ const allowedNetworks = getTargetNetworks();
 
 const batchRegistryAbi = batchRegistryJson.abi;
 const BATCH_REGISTRY_ADDRESS = "0x47FD1Ff08476d7c7196089D4f5BcabbED4f4ddbE";
+// const BATCH_REGISTRY_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 type AddressInfoDropdownProps = {
   address: Address;
@@ -121,7 +122,7 @@ export const AddressInfoDropdown = ({
                   className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
                   aria-hidden="true"
                 />
-                <span className=" whitespace-nowrap">Copy address</span>
+                <span className="whitespace-nowrap">Copy address</span>
               </div>
             ) : (
               <CopyToClipboard
@@ -138,7 +139,7 @@ export const AddressInfoDropdown = ({
                     className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
                     aria-hidden="true"
                   />
-                  <span className=" whitespace-nowrap">Copy address</span>
+                  <span className="whitespace-nowrap">Copy address</span>
                 </div>
               </CopyToClipboard>
             )}
