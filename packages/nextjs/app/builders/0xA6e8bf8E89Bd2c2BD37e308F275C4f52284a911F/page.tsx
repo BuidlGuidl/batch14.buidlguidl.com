@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+// Add this import
 import type { NextPage } from "next";
 import { EnvelopeIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
@@ -11,10 +13,12 @@ const BuilderPage: NextPage = () => {
         <div className="bg-base-100 shadow-lg rounded-xl p-6 mb-6 border border-base-300 transform hover:scale-[1.02] transition-transform duration-200">
           <div className="flex flex-col items-center text-center">
             <div className="w-20 h-20 rounded-full overflow-hidden mb-4 shadow-md">
-              <img
+              <Image
                 src="https://avatars.githubusercontent.com/u/92280484?v=4"
                 alt="Osiyomeoh Aleonomoh Profile Picture"
-                className="w-full h-full object-cover"
+                width={80} // Matches w-20 (20 * 4px = 80px in Tailwind)
+                height={80} // Matches h-20
+                className="object-cover"
               />
             </div>
             <h1 className="text-3xl font-bold text-base-content mb-2">Osiyomeoh Aleonomoh</h1>
@@ -32,9 +36,10 @@ const BuilderPage: NextPage = () => {
             Solidity engineer, and Zero-Knowledge (ZK) expert. With expertise across PHP, Yii2 & Laravel frameworks,
             HTML5, CSS3, Vanilla JavaScript, Node.js, React, TypeScript, and Solidity, I excel in object-oriented
             programming (OOP) and have successfully deployed live projects on cloud platforms. In addition to my
-            technical skills. My journey reflects a commitment to leadership, continuous learning, and staying at the
-            forefront of Web3, blockchain, backend development, and fintech innovation. Driven to make a lasting impact,
-            I am excited to continue bridging technology and business to solve real-world challenges globally.
+            technical skills, I am an entrepreneur and co-founder of two tech companies, creating over 20 jobs and
+            empowering African youths. My journey reflects a commitment to leadership, continuous learning, and staying
+            at the forefront of Web3, blockchain, backend development, and fintech innovation. Driven to make a lasting
+            impact, I am excited to continue bridging technology and business to solve real-world challenges globally.
           </p>
         </div>
 
