@@ -36,10 +36,9 @@ const BuilderPage: NextPage = () => {
             Solidity engineer, and Zero-Knowledge (ZK) expert. With expertise across PHP, Yii2 & Laravel frameworks,
             HTML5, CSS3, Vanilla JavaScript, Node.js, React, TypeScript, and Solidity, I excel in object-oriented
             programming (OOP) and have successfully deployed live projects on cloud platforms. In addition to my
-            technical skills, I am an entrepreneur and co-founder of two tech companies, creating over 20 jobs and
-            empowering African youths. My journey reflects a commitment to leadership, continuous learning, and staying
-            at the forefront of Web3, blockchain, backend development, and fintech innovation. Driven to make a lasting
-            impact, I am excited to continue bridging technology and business to solve real-world challenges globally.
+            technical skills. My journey reflects a commitment to leadership, continuous learning, and staying at the
+            forefront of Web3, blockchain, backend development, and fintech innovation. Driven to make a lasting impact,
+            I am excited to continue bridging technology and business to solve real-world challenges globally.
           </p>
         </div>
 
