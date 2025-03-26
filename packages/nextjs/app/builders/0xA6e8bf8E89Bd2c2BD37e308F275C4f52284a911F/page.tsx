@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-// Add this import
 import type { NextPage } from "next";
 import { EnvelopeIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
@@ -16,8 +15,8 @@ const BuilderPage: NextPage = () => {
               <Image
                 src="https://avatars.githubusercontent.com/u/92280484?v=4"
                 alt="Osiyomeoh Aleonomoh Profile Picture"
-                width={80} // Matches w-20 (20 * 4px = 80px in Tailwind)
-                height={80} // Matches h-20
+                width={80}
+                height={80}
                 className="object-cover"
               />
             </div>

@@ -3,6 +3,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ["avatars.githubusercontent.com"],
+  },
   typescript: {
     ignoreBuildErrors: process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
   },
