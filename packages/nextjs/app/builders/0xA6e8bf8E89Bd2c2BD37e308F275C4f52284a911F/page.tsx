@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import { EnvelopeIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
 
-const BuilderPage: NextPage = () => {
+const OsiyomeohPage: NextPage = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-gradient-to-b from-base-100 to-base-200 min-h-screen">
       <div className="max-w-3xl w-full px-6 py-8">
@@ -95,4 +95,4 @@ const BuilderPage: NextPage = () => {
   );
 };
 
-export default BuilderPage;
+export default OsiyomeohPage;
