@@ -111,7 +111,7 @@ export const Header = () => {
         {isLocalNetwork && <FaucetButton />}
       </div>
       <div className="flex flex-col mr-2">
-        <MemberStatus></MemberStatus>
+        <MemberStatus />
       </div>
     </div>
   );
