@@ -23,10 +23,11 @@ export const MemberStatus = () => {
     args: [address],
   });
 
-  // Convert to boolean: isCheckedIn is considered "checked in" if it's NOT the zero address
-  const isCheckedIn = yourContractAddress && yourContractAddress !== "0x0000000000000000000000000000000000000000";
-
-  const status = !isMember ? "not_a_member" : !isCheckedIn ? "member_not_checked_in" : "checked_in";
+  const status = !isMember
+    ? "not_a_member"
+    : yourContractAddress && yourContractAddress !== "0x0000000000000000000000000000000000000000"
+      ? "checked_in"
+      : "member_not_checked_in";
 
   return <>{icons[status as keyof typeof icons]}</>;
 };
