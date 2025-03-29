@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Address } from "~~/components/scaffold-eth";
@@ -48,28 +48,26 @@ const BUILDER_PROFILES: Record<string, { name: string; avatarUrl: string }> = {
 };
 
 export default function Page() {
-  const elementRef = useRef(null);
-
   const { data: events } = useScaffoldEventHistory({
     contractName: "BatchRegistry",
     eventName: "CheckedIn",
-    fromBlock: 0n,
+    fromBlock: 314188177n, // About 10k blocks before contract deployment (block 314198177)
     chainId: 42161,
   });
 
   const builders = useMemo<Builder[]>(() => {
     if (!events) return [];
 
-    // Filter out duplicate addresses
-    const filteredAddresses: string[] = [];
+    // Filter out duplicate addresses to get unique ones
+    const uniqueAddresses: string[] = [];
     events.forEach(event => {
       const address = event.args.builder;
       if (!address) return;
-      if (!filteredAddresses.find(addr => address === addr)) filteredAddresses.push(address);
+      if (!uniqueAddresses.find(addr => address === addr)) uniqueAddresses.push(address);
     });
 
     // Transform addresses into builder objects
-    const buildersList = filteredAddresses.map(address => ({
+    const buildersList = uniqueAddresses.map(address => ({
       address,
       // Check if the builder has a personal page
       hasPersonalPage: !!Object.keys(BUILDER_PROFILES).find(bp => bp.toLowerCase() === address.toLowerCase()),
@@ -89,7 +87,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-base-200 to-base-300">
-      <div className="container mx-auto px-4 py-12" ref={elementRef}>
+      <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 text-transparent bg-clip-text">
@@ -106,24 +104,15 @@ export default function Page() {
                   {/* Avatar image */}
                   <div className="avatar">
                     <div className="w-10 h-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1 overflow-hidden">
-                      {builder.avatarUrl &&
-                        (builder.avatarUrl.startsWith("/") ? (
-                          <Image
-                            src={builder.avatarUrl}
-                            alt={`${builder.name}'s avatar`}
-                            width={48}
-                            height={48}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <Image
-                            src={builder.avatarUrl}
-                            alt={`${builder.name}'s avatar`}
-                            width={48}
-                            height={48}
-                            className="w-full h-full object-cover"
-                          />
-                        ))}
+                      {builder.avatarUrl && (
+                        <Image
+                          src={builder.avatarUrl}
+                          alt={`${builder.name}'s avatar`}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
                     </div>
                   </div>
 
