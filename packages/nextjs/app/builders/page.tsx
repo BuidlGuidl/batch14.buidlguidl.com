@@ -51,7 +51,7 @@ export default function Page() {
   const { data: events } = useScaffoldEventHistory({
     contractName: "BatchRegistry",
     eventName: "CheckedIn",
-    fromBlock: 314188177n, // About 10k blocks before contract deployment (block 314198177)
+    fromBlock: 314186263n, // 10 blocks before contract deployment (block 314186273)
     chainId: 42161,
   });
 
