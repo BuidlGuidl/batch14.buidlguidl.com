@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "The 14th group of builders put together by BuidlGuidl 🚀",
     images: [
       {
-        url: "/batch-14-thumbnail.jpg",
+        url: "/batch-14-thumbnail.png",
         width: 1200,
         height: 630,
         alt: "Batch #14 Preview",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Batch #14 - BuidlGuidl 🏰",
     description: "The 14th group of builders put together by BuidlGuidl 🚀",
-    images: ["/batch-14-thumbnail.jpg"],
+    images: ["/batch-14-thumbnail.png"],
   },
 };
 
