@@ -3,9 +3,9 @@ import { useAccount } from "wagmi";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 const icons = {
-  not_a_member: "❌",
-  member_not_checked_in: "☑️",
-  checked_in: "✅",
+  not_a_member: "❌ Not a member",
+  member_not_checked_in: "☑️ Not checked in",
+  checked_in: "✅ Checked in",
 };
 
 export const MemberStatus = () => {

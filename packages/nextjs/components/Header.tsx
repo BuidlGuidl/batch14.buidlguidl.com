@@ -110,7 +110,7 @@ export const Header = () => {
         <RainbowKitCustomConnectButton />
         {isLocalNetwork && <FaucetButton />}
       </div>
-      <div className="flex flex-col mr-2">
+      <div className="flex mr-2 whitespace-nowrap">
         <MemberStatus />
       </div>
     </div>
