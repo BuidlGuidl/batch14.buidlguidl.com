@@ -62,11 +62,12 @@ export default function Page() {
 
       const existingPages = new Set<string>();
 
-      // Check each address for a profile page
+      // Check each address for a profile page using the API
       for (const address of uniqueAddresses) {
         try {
-          const response = await fetch(`/builders/${address}`);
-          if (response.ok) {
+          const response = await fetch(`/api/builders/${address}`);
+          const data = await response.json();
+          if (data.exists) {
             existingPages.add(address);
           }
         } catch (error) {
