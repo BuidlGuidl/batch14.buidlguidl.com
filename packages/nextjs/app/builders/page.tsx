@@ -53,29 +53,13 @@ export default function Page() {
     const checkProfilePages = async () => {
       if (!events) return;
 
-      const uniqueAddresses: string[] = [];
-      events.forEach(event => {
-        const address = event.args.builder;
-        if (!address) return;
-        if (!uniqueAddresses.find(addr => address === addr)) uniqueAddresses.push(address);
-      });
-
-      const existingPages = new Set<string>();
-
-      // Check each address for a profile page using the API
-      for (const address of uniqueAddresses) {
-        try {
-          const response = await fetch(`/api/builders/${address}`);
-          const data = await response.json();
-          if (data.exists) {
-            existingPages.add(address);
-          }
-        } catch (error) {
-          console.error(`Error checking profile for ${address}:`, error);
-        }
+      try {
+        const response = await fetch(`/api/builders`);
+        const existingAddresses = await response.json();
+        setProfilePages(new Set(existingAddresses));
+      } catch (error) {
+        console.error(`Error checking profiles:`, error);
       }
-
-      setProfilePages(existingPages);
     };
 
     checkProfilePages();
