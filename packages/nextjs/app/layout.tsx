@@ -1,13 +1,31 @@
 import "@rainbow-me/rainbowkit/styles.css";
+import { Metadata } from "next";
 import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
 import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
-import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
-export const metadata = getMetadata({
-  title: "Batch #14-Scaffold-ETH 2 ",
-  description: "Built with 🏗 Scaffold-ETH 2",
-});
+export const metadata: Metadata = {
+  title: "Batch #14 - BuidlGuidl 🏰",
+  description: "The 14th group of builders put together by BuidlGuidl 🚀",
+  openGraph: {
+    title: "Batch #14 - BuidlGuidl 🏰",
+    description: "The 14th group of builders put together by BuidlGuidl 🚀",
+    images: [
+      {
+        url: "/batch-14-thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Batch #14 Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Batch #14 - BuidlGuidl 🏰",
+    description: "The 14th group of builders put together by BuidlGuidl 🚀",
+    images: ["/batch-14-thumbnail.png"],
+  },
+};
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
